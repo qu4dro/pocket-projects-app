@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentProjectsBinding
+import ru.orlovvv.projects.ui.dialogs.CreateProjectDialog
 
 class ProjectsFragment : Fragment(R.layout.fragment_projects) {
 
@@ -27,6 +28,13 @@ class ProjectsFragment : Fragment(R.layout.fragment_projects) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        findNavController().navigate(R.id.action_projectsFragment_to_boardContainerFragment)
+        binding.fabCreateProject.setOnClickListener {
+            openCreateProjectDialog()
+        }
+    }
+
+    private fun openCreateProjectDialog() {
+        val dialog = CreateProjectDialog()
+        dialog.show(requireActivity().supportFragmentManager, "CreateProjectDialog")
     }
 }
