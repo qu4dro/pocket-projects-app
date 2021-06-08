@@ -6,16 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import ru.orlovvv.projects.databinding.DialogCreateProjectBinding
-import ru.orlovvv.projects.db.entities.Project
+import ru.orlovvv.projects.databinding.DialogCreateTaskBinding
+import ru.orlovvv.projects.db.entities.Task
 import ru.orlovvv.projects.ui.PocketProjectsViewModel
 
-class CreateProjectDialog : BottomSheetDialogFragment() {
+class CreateTaskDialog : BottomSheetDialogFragment() {
 
-    private lateinit var binding: DialogCreateProjectBinding
+    private lateinit var binding: DialogCreateTaskBinding
     private val pocketProjectsViewModel: PocketProjectsViewModel by activityViewModels()
     private lateinit var bottomDialog: Dialog
 
@@ -25,7 +24,7 @@ class CreateProjectDialog : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = DialogCreateProjectBinding.inflate(layoutInflater)
+        binding = DialogCreateTaskBinding.inflate(layoutInflater)
 
         return binding.root
     }
@@ -34,8 +33,8 @@ class CreateProjectDialog : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            btnCreateProject.setOnClickListener {
-                createProject()
+            btnCreateTask.setOnClickListener {
+                createTask()
                 bottomDialog.dismiss()
             }
         }
@@ -47,14 +46,16 @@ class CreateProjectDialog : BottomSheetDialogFragment() {
         return bottomDialog
     }
 
-    private fun createProject() {
+    private fun createTask() {
         pocketProjectsViewModel.apply {
-            createProject(
-                Project(
-                    binding.etProjectName.text.toString(),
-                    binding.etProjectDescription.text.toString()
+            createTask(
+                Task(
+                    binding.etTaskDescription.text.toString(),
+                    currentPagerTaskStatus.value.toString(),
+                    currentProjectId.value!!
                 )
             )
         }
+
     }
 }

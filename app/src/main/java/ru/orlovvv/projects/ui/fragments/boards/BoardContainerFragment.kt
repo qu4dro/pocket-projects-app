@@ -5,19 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentBoardContainerBinding
-import ru.orlovvv.projects.db.entities.Task
 import ru.orlovvv.projects.ui.PocketProjectsViewModel
+import ru.orlovvv.projects.ui.dialogs.CreateTaskDialog
 import ru.orlovvv.projects.ui.fragments.boards.adapters.ScreenSlidePagerAdapter
 import ru.orlovvv.projects.util.TaskStatus
 import timber.log.Timber
-import java.text.FieldPosition
 
 class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
 
@@ -42,22 +39,16 @@ class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
             pager.adapter =
                 ScreenSlidePagerAdapter(requireActivity().supportFragmentManager, lifecycle)
             fabCreateTask.setOnClickListener {
-                createTask()
+                openCreateTaskDialog()
             }
         }
 
         setPagerTabs()
     }
 
-    private fun createTask() {
-        pocketProjectsViewModel.createTask(
-            Task(
-                "Test task",
-                pocketProjectsViewModel.currentPagerTaskStatus.value.toString(),
-                false,
-                pocketProjectsViewModel.currentProjectId.value!!
-            )
-        )
+    private fun openCreateTaskDialog() {
+        val dialog = CreateTaskDialog()
+        dialog.show(requireActivity().supportFragmentManager, "CreateTaskDialog")
     }
 
     private fun setPagerTabs() {

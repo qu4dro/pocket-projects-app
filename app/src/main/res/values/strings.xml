@@ -6,4 +6,9 @@
     <string name="todo">TODO</string>
     <string name="doing">DOING</string>
     <string name="done">DONE</string>
+    <string name="task">Task</string>
+    <string name="create_task">Create task</string>
+    <string name="create_project">Create project</string>
+    <string name="project_name">Project name</string>
+    <string name="project_description">Project description</string>
 </resources>

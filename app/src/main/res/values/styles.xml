@@ -21,4 +21,8 @@
         <item name="cornerRadius">8dp</item>
     </style>
 
+    <style name="TextFieldStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
 </resources>

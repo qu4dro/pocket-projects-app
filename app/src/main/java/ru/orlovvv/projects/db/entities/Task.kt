@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 data class Task(
     val description: String,
     val status: String,
-    val isChecked: Boolean = false,
-    val projectId: Long
+    val projectId: Long,
+    val isChecked: Boolean = false
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Long? = null
