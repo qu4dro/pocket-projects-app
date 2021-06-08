@@ -37,7 +37,9 @@ class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
 
         binding.apply {
             pager.adapter =
-                ScreenSlidePagerAdapter(requireActivity().supportFragmentManager, lifecycle)
+                ScreenSlidePagerAdapter(childFragmentManager, lifecycle)
+
+            pager.offscreenPageLimit
             fabCreateTask.setOnClickListener {
                 openCreateTaskDialog()
             }
@@ -45,6 +47,7 @@ class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
 
         setPagerTabs()
     }
+
 
     private fun openCreateTaskDialog() {
         val dialog = CreateTaskDialog()
