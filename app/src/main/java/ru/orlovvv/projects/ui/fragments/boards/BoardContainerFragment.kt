@@ -29,12 +29,6 @@ class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
 
         binding = FragmentBoardContainerBinding.inflate(layoutInflater)
 
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         binding.apply {
             pager.adapter =
                 ScreenSlidePagerAdapter(childFragmentManager, lifecycle)
@@ -42,6 +36,12 @@ class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
                 openCreateTaskDialog()
             }
         }
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         setPagerTabs()
     }
