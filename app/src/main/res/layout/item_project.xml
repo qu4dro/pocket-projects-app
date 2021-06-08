@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="project"
+            type="ru.orlovvv.projects.db.entities.Project" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/CardViewStyle.ItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_project_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{project.name}"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Projects name" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_project_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="8"
+                android:text="@{project.description}"
+                app:layout_constraintTop_toBottomOf="@id/tv_project_name"
+                tools:text="Projects description" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

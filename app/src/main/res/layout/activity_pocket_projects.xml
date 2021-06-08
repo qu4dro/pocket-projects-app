@@ -15,8 +15,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true">
+            android:layout_height="match_parent">
 
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/abl"
@@ -33,9 +32,11 @@
                     android:layout_height="?attr/actionBarSize"
                     android:background="@android:color/transparent"
                     android:elevation="0dp"
+                    app:layout_scrollFlags="scroll|enterAlways"
                     app:navigationIcon="@drawable/ic_menu" />
 
             </com.google.android.material.appbar.AppBarLayout>
+
 
             <fragment
                 android:id="@+id/nav_host_fragment"
@@ -45,11 +46,13 @@
                 app:defaultNavHost="true"
                 app:layout_anchor="@id/abl"
                 app:layout_anchorGravity="bottom"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/abl"
                 app:navGraph="@navigation/navigation_graph" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigation_view"
@@ -58,5 +61,6 @@
             android:layout_gravity="start"
             android:foregroundGravity="left"
             app:menu="@menu/navigation_menu" />
+
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

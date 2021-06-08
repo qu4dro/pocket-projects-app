@@ -2,6 +2,7 @@ package ru.orlovvv.projects.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,6 +13,7 @@ import ru.orlovvv.projects.databinding.ActivityPocketProjectsBinding
 class PocketProjectsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPocketProjectsBinding
+    private val pocketProjectsViewModel: PocketProjectsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
