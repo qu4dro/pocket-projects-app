@@ -7,15 +7,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentBoardContainerBinding
+import ru.orlovvv.projects.db.entities.Task
+import ru.orlovvv.projects.ui.PocketProjectsViewModel
 import ru.orlovvv.projects.ui.fragments.boards.adapters.ScreenSlidePagerAdapter
+import ru.orlovvv.projects.util.TaskStatus
+import timber.log.Timber
+import java.text.FieldPosition
 
 class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
 
     private lateinit var binding: FragmentBoardContainerBinding
+    private val pocketProjectsViewModel: PocketProjectsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,14 +32,32 @@ class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
 
         binding = FragmentBoardContainerBinding.inflate(layoutInflater)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.apply {
             pager.adapter =
                 ScreenSlidePagerAdapter(requireActivity().supportFragmentManager, lifecycle)
+            fabCreateTask.setOnClickListener {
+                createTask()
+            }
         }
 
         setPagerTabs()
+    }
 
-        return binding.root
+    private fun createTask() {
+        pocketProjectsViewModel.createTask(
+            Task(
+                "Test task",
+                pocketProjectsViewModel.currentPagerTaskStatus.value.toString(),
+                false,
+                pocketProjectsViewModel.currentProjectId.value!!
+            )
+        )
     }
 
     private fun setPagerTabs() {
@@ -46,6 +71,9 @@ class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
         binding.tabLayoutTop.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 binding.pager.currentItem = tab.position
+                pocketProjectsViewModel.currentPagerTaskStatus.value =
+                    getStatusFromPosition(tab.position)
+                Timber.d(pocketProjectsViewModel.currentPagerTaskStatus.value.toString())
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {}
@@ -62,5 +90,12 @@ class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
         })
     }
 
+    private fun getStatusFromPosition(position: Int): TaskStatus {
+        return when (position) {
+            1 -> TaskStatus.DOING
+            2 -> TaskStatus.DONE
+            else -> TaskStatus.TODO
+        }
+    }
 
 }
