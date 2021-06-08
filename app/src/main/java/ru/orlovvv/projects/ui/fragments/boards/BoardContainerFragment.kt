@@ -38,8 +38,6 @@ class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
         binding.apply {
             pager.adapter =
                 ScreenSlidePagerAdapter(childFragmentManager, lifecycle)
-
-            pager.offscreenPageLimit
             fabCreateTask.setOnClickListener {
                 openCreateTaskDialog()
             }
