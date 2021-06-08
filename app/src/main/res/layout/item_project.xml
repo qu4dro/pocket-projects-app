@@ -22,6 +22,7 @@
             android:padding="16dp">
 
             <com.google.android.material.textview.MaterialTextView
+                style="@style/TextStyleBoldHead"
                 android:id="@+id/tv_project_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,6 +33,8 @@
                 tools:text="Projects name" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:layout_marginTop="16dp"
+                style="@style/TextStyleBoldDescription"
                 android:id="@+id/tv_project_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

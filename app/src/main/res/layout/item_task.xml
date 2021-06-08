@@ -13,7 +13,8 @@
     <com.google.android.material.card.MaterialCardView
         style="@style/CardViewStyle.ItemStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -21,14 +22,29 @@
             android:padding="16dp">
 
             <com.google.android.material.textview.MaterialTextView
+                style="@style/TextStyleBoldHead"
                 android:id="@+id/tv_task_description"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="2"
+                app:layout_constraintStart_toStartOf="parent"
                 android:text="@{task.description}"
+                app:layout_constraintEnd_toStartOf="@id/btn_more"
                 app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="16dp"
                 tools:text="Task description" />
+
+            <ImageView
+                android:clickable="true"
+                android:id="@+id/btn_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_more"
+                app:layout_constraintBottom_toBottomOf="@id/tv_task_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_task_description"
+                app:layout_constraintTop_toTopOf="@id/tv_task_description" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
