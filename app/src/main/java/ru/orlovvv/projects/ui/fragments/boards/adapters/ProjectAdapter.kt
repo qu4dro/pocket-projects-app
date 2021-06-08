@@ -9,11 +9,11 @@ import ru.orlovvv.projects.databinding.ItemProjectBinding
 import ru.orlovvv.projects.db.entities.Project
 
 class ProjectAdapter :
-    ListAdapter<Project, ProjectAdapter.DefaultPatternViewHolder>(
-        DefaultPatternCallBack()
+    ListAdapter<Project, ProjectAdapter.ProjectViewHolder>(
+        ProjectCallBack()
     ) {
 
-    class DefaultPatternViewHolder(private val binding: ItemProjectBinding) :
+    class ProjectViewHolder(private val binding: ItemProjectBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(project: Project) {
             binding.project = project
@@ -21,7 +21,7 @@ class ProjectAdapter :
         }
     }
 
-    class DefaultPatternCallBack : DiffUtil.ItemCallback<Project>() {
+    class ProjectCallBack : DiffUtil.ItemCallback<Project>() {
         override fun areItemsTheSame(
             oldItem: Project,
             newItem: Project
@@ -42,8 +42,8 @@ class ProjectAdapter :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): DefaultPatternViewHolder {
-        return DefaultPatternViewHolder(
+    ): ProjectViewHolder {
+        return ProjectViewHolder(
             ItemProjectBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -53,12 +53,22 @@ class ProjectAdapter :
     }
 
     override fun onBindViewHolder(
-        holder: DefaultPatternViewHolder,
+        holder: ProjectViewHolder,
         position: Int
     ) {
-        val breathingPattern = getItem(position)
-        holder.bind(breathingPattern)
+        val project = getItem(position)
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.let {
+                it(project)
+            }
+        }
+        holder.bind(project)
     }
 
+    private var onItemClickListener: ((Project) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (Project) -> Unit) {
+        onItemClickListener = listener
+    }
 
 }

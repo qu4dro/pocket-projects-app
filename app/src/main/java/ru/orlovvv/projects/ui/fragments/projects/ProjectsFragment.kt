@@ -7,6 +7,7 @@ import android.view.ViewGroup
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentProjectsBinding
 import ru.orlovvv.projects.ui.PocketProjectsViewModel
@@ -18,6 +19,7 @@ class ProjectsFragment : Fragment(R.layout.fragment_projects) {
 
     private lateinit var binding: FragmentProjectsBinding
     private val pocketProjectsViewModel: PocketProjectsViewModel by activityViewModels()
+    private var projectAdapter = ProjectAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,12 +39,16 @@ class ProjectsFragment : Fragment(R.layout.fragment_projects) {
             lifecycleOwner = this@ProjectsFragment
             viewModel = pocketProjectsViewModel
             rvProjects.apply {
-                adapter = ProjectAdapter()
+                adapter = projectAdapter
                 setStickersSpacing()
             }
             fabCreateProject.setOnClickListener {
                 openCreateProjectDialog()
             }
+        }
+        projectAdapter.setOnItemClickListener {
+            pocketProjectsViewModel.currentProjectId.value = it.id
+            findNavController().navigate(R.id.action_projectsFragment_to_boardContainerFragment)
         }
     }
 
