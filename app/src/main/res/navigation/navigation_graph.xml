@@ -36,7 +36,9 @@
         tools:layout="@layout/fragment_splash_screen">
         <action
             android:id="@+id/action_splashScreenFragment_to_projectsFragment"
-            app:destination="@id/projectsFragment" />
+            app:destination="@id/projectsFragment"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/statisticsFragment"
