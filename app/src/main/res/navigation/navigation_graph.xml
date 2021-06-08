@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/boardDoingFragment"
+        android:name="ru.orlovvv.projects.ui.fragments.boards.BoardDoingFragment"
+        android:label="BoardDoingFragment"
+        tools:layout="@layout/fragment_board_doing" />
+    <fragment
+        android:id="@+id/boardDoneFragment"
+        android:name="ru.orlovvv.projects.ui.fragments.boards.BoardDoneFragment"
+        android:label="BoardDoneFragment"
+        tools:layout="@layout/fragment_board_done" />
+    <fragment
+        android:id="@+id/boardTodoFragment"
+        android:name="ru.orlovvv.projects.ui.fragments.boards.BoardTodoFragment"
+        android:label="BoardTodoFragment"
+        tools:layout="@layout/fragment_board_todo" />
+    <fragment
+        android:id="@+id/projectsFragment"
+        android:name="ru.orlovvv.projects.ui.fragments.projects.ProjectsFragment"
+        android:label="ProjectsFragment"
+        tools:layout="@layout/fragment_projects" />
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="ru.orlovvv.projects.ui.fragments.projects.SplashScreenFragment"
+        android:label="SplashScreenFragment"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/action_splashScreenFragment_to_projectsFragment"
+            app:destination="@id/projectsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="ru.orlovvv.projects.ui.fragments.StatisticsFragment"
+        android:label="StatisticsFragment"
+        tools:layout="@layout/fragment_statistics" />
+    <fragment
+        android:id="@+id/trashFragment"
+        android:name="ru.orlovvv.projects.ui.fragments.TrashFragment"
+        android:label="TrashFragment"
+        tools:layout="@layout/fragment_trash" />
+    <fragment
+        android:id="@+id/boardContainerFragment"
+        android:name="ru.orlovvv.projects.ui.fragments.boards.BoardContainerFragment"
+        android:label="BoardContainerFragment"
+        tools:layout="@layout/fragment_board_container" />
+</navigation>
