@@ -3,4 +3,7 @@
     <string name="projects">Projects</string>
     <string name="statistics">Statistics</string>
     <string name="trash_bin">Trash bin</string>
+    <string name="todo">TODO</string>
+    <string name="doing">DOING</string>
+    <string name="done">DONE</string>
 </resources>

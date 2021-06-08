@@ -24,7 +24,11 @@
         android:id="@+id/projectsFragment"
         android:name="ru.orlovvv.projects.ui.fragments.projects.ProjectsFragment"
         android:label="ProjectsFragment"
-        tools:layout="@layout/fragment_projects" />
+        tools:layout="@layout/fragment_projects" >
+        <action
+            android:id="@+id/action_projectsFragment_to_boardContainerFragment"
+            app:destination="@id/boardContainerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"
         android:name="ru.orlovvv.projects.ui.fragments.projects.SplashScreenFragment"
