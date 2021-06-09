@@ -47,7 +47,10 @@ class ProjectsFragment : Fragment(R.layout.fragment_projects) {
             }
         }
         projectAdapter.setOnItemClickListener {
-            pocketProjectsViewModel.currentProjectId.value = it.id
+            pocketProjectsViewModel.apply {
+                currentProjectId.value = it.id
+                currentProjectName.value = it.name
+            }
             findNavController().navigate(R.id.action_projectsFragment_to_boardContainerFragment)
         }
     }

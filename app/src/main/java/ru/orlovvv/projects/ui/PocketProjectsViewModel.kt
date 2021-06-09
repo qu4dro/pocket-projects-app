@@ -23,6 +23,10 @@ class PocketProjectsViewModel @Inject constructor(private val pocketProjectsRepo
     val currentProjectId
         get() = _currentProjectId
 
+    private var _currentProjectName = MutableLiveData<String>()
+    val currentProjectName
+        get() = _currentProjectName
+
     private var _currentProjectTasksTodo: LiveData<List<Task>> = MutableLiveData<List<Task>>()
     val currentProjectTasksTodo
         get() = _currentProjectTasksTodo

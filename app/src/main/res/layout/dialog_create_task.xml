@@ -25,6 +25,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextStyleBoldHead"
                     android:id="@+id/tv_dialog_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

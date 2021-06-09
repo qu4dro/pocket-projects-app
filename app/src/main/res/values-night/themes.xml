@@ -10,10 +10,10 @@
         <item name="colorSurface">@color/black_surface</item>
         <item name="colorError">@color/red_200</item>
 
-        <item name="colorOnPrimary">@color/black_900</item>
+        <item name="colorOnPrimary">@color/blue_50</item>
         <item name="android:textColor">@color/blue_50</item>
         <item name="android:textColorPrimary">@color/blue_50</item>
-        <item name="android:textColorSecondary">@color/blue_light_text</item>
+        <item name="android:textColorSecondary">@color/blue_50</item>
 
         <item name="colorOnSecondary">@color/black_900</item>
 

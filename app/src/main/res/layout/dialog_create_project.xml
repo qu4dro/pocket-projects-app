@@ -26,6 +26,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_dialog_header"
+                    style="@style/TextStyleBoldHead"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/create_project"

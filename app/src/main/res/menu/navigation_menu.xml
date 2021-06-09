@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:icon="@drawable/ic_projects"
         android:id="@+id/projectsFragment"
         android:checkable="true"
         android:checked="true"
         android:title="@string/projects" />
     <item
+        android:icon="@drawable/ic_statistics"
         android:id="@+id/statisticsFragment"
         android:checkable="true"
         android:title="@string/statistics" />
     <item
+        android:icon="@drawable/ic_delete"
         android:id="@+id/trashFragment"
         android:checkable="true"
         android:title="@string/trash_bin" />
