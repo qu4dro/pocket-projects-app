@@ -23,21 +23,16 @@ class PocketProjectsViewModel @Inject constructor(private val pocketProjectsRepo
     val currentProjectId
         get() = _currentProjectId
 
-    private var _currentProjectTasksTodo = Transformations.switchMap(_currentProjectId) {
-        pocketProjectsRepository.getCurrentProjectTasks(it, TaskStatus.TODO)
-    }
+    private var _currentProjectTasksTodo: LiveData<List<Task>> = MutableLiveData<List<Task>>()
     val currentProjectTasksTodo
         get() = _currentProjectTasksTodo
 
-    private var _currentProjectTasksDoing = Transformations.switchMap(_currentProjectId) {
-        pocketProjectsRepository.getCurrentProjectTasks(it, TaskStatus.DOING)
-    }
+    private var _currentProjectTasksDoing: LiveData<List<Task>> = MutableLiveData<List<Task>>()
+
     val currentProjectTasksDoing
         get() = _currentProjectTasksDoing
 
-    private var _currentProjectTasksDone = Transformations.switchMap(_currentProjectId) {
-        pocketProjectsRepository.getCurrentProjectTasks(it, TaskStatus.DONE)
-    }
+    private var _currentProjectTasksDone: LiveData<List<Task>> = MutableLiveData<List<Task>>()
     val currentProjectTasksDone
         get() = _currentProjectTasksDone
 
@@ -47,5 +42,14 @@ class PocketProjectsViewModel @Inject constructor(private val pocketProjectsRepo
 
     fun createTask(task: Task) = viewModelScope.launch {
         pocketProjectsRepository.insertTask(task)
+    }
+
+    fun getTasks(projectId: Long) {
+        _currentProjectTasksTodo =
+            pocketProjectsRepository.getCurrentProjectTasks(projectId, TaskStatus.TODO)
+        _currentProjectTasksDoing =
+            pocketProjectsRepository.getCurrentProjectTasks(projectId, TaskStatus.DOING)
+        _currentProjectTasksDone =
+            pocketProjectsRepository.getCurrentProjectTasks(projectId, TaskStatus.DONE)
     }
 }
