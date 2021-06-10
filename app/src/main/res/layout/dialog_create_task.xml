@@ -25,8 +25,8 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textview.MaterialTextView
-                    style="@style/TextStyleMediumHead"
                     android:id="@+id/tv_dialog_header"
+                    style="@style/TextStyleMediumHead"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/create_task"
@@ -63,18 +63,30 @@
                         android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:textAppearance="@style/TextStyleBoldDescription"
+                    android:id="@+id/switch_important"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:checked="false"
+                    android:text="@string/important"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tf_task_description" />
+
                 <com.google.android.material.button.MaterialButton
-                    android:textColor="?attr/colorOnSecondary"
-                    android:text="@string/create_task"
-                    android:layout_marginTop="64dp"
                     android:id="@+id/btn_create_task"
                     style="@style/ButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="64dp"
+                    android:text="@string/create_task"
+                    android:textColor="?attr/colorOnSecondary"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tf_task_description" />
+                    app:layout_constraintTop_toBottomOf="@id/switch_important" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

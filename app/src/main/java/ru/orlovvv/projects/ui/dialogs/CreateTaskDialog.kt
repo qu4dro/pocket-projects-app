@@ -52,7 +52,9 @@ class CreateTaskDialog : BottomSheetDialogFragment() {
                 Task(
                     binding.etTaskDescription.text.toString(),
                     currentPagerTaskStatus.value.toString(),
-                    currentProjectId.value!!
+                    currentProjectId.value!!,
+                    false,
+                    binding.switchImportant.isChecked
                 )
             )
         }
