@@ -10,12 +10,12 @@ import androidx.fragment.app.activityViewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ru.orlovvv.projects.databinding.DialogCreateTaskBinding
 import ru.orlovvv.projects.db.entities.Task
-import ru.orlovvv.projects.ui.PocketProjectsViewModel
+import ru.orlovvv.projects.ui.ProjectsViewModel
 
 class CreateTaskDialog : BottomSheetDialogFragment() {
 
     private lateinit var binding: DialogCreateTaskBinding
-    private val pocketProjectsViewModel: PocketProjectsViewModel by activityViewModels()
+    private val projectsViewModel: ProjectsViewModel by activityViewModels()
     private lateinit var bottomDialog: Dialog
 
     override fun onCreateView(
@@ -47,7 +47,7 @@ class CreateTaskDialog : BottomSheetDialogFragment() {
     }
 
     private fun createTask() {
-        pocketProjectsViewModel.apply {
+        projectsViewModel.apply {
             createTask(
                 Task(
                     binding.etTaskDescription.text.toString(),

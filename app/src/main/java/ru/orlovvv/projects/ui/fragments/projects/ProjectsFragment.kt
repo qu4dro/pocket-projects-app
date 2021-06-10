@@ -10,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentProjectsBinding
-import ru.orlovvv.projects.ui.PocketProjectsViewModel
+import ru.orlovvv.projects.ui.ProjectsViewModel
 import ru.orlovvv.projects.ui.dialogs.CreateProjectDialog
 import ru.orlovvv.projects.ui.fragments.boards.adapters.ProjectAdapter
 import ru.orlovvv.projects.util.setStickersSpacing
@@ -18,7 +18,7 @@ import ru.orlovvv.projects.util.setStickersSpacing
 class ProjectsFragment : Fragment(R.layout.fragment_projects) {
 
     private lateinit var binding: FragmentProjectsBinding
-    private val pocketProjectsViewModel: PocketProjectsViewModel by activityViewModels()
+    private val projectsViewModel: ProjectsViewModel by activityViewModels()
     private var projectAdapter = ProjectAdapter()
 
     override fun onCreateView(
@@ -37,7 +37,7 @@ class ProjectsFragment : Fragment(R.layout.fragment_projects) {
 
         binding.apply {
             lifecycleOwner = this@ProjectsFragment
-            viewModel = pocketProjectsViewModel
+            viewModel = projectsViewModel
             rvProjects.apply {
                 adapter = projectAdapter
                 setStickersSpacing()
@@ -47,7 +47,7 @@ class ProjectsFragment : Fragment(R.layout.fragment_projects) {
             }
         }
         projectAdapter.setOnItemClickListener {
-            pocketProjectsViewModel.apply {
+            projectsViewModel.apply {
                 currentProjectId.value = it.id
                 currentProjectName.value = it.name
             }

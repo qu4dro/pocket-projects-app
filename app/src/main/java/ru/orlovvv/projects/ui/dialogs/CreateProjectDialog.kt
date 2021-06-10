@@ -6,17 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ru.orlovvv.projects.databinding.DialogCreateProjectBinding
 import ru.orlovvv.projects.db.entities.Project
-import ru.orlovvv.projects.ui.PocketProjectsViewModel
+import ru.orlovvv.projects.ui.ProjectsViewModel
 
 class CreateProjectDialog : BottomSheetDialogFragment() {
 
     private lateinit var binding: DialogCreateProjectBinding
-    private val pocketProjectsViewModel: PocketProjectsViewModel by activityViewModels()
+    private val projectsViewModel: ProjectsViewModel by activityViewModels()
     private lateinit var bottomDialog: Dialog
 
     override fun onCreateView(
@@ -48,7 +47,7 @@ class CreateProjectDialog : BottomSheetDialogFragment() {
     }
 
     private fun createProject() {
-        pocketProjectsViewModel.apply {
+        projectsViewModel.apply {
             createProject(
                 Project(
                     binding.etProjectName.text.toString(),

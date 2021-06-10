@@ -5,17 +5,17 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import ru.orlovvv.projects.db.entities.Project
 import ru.orlovvv.projects.db.entities.Task
-import ru.orlovvv.projects.repository.PocketProjectsRepository
+import ru.orlovvv.projects.repository.ProjectsRepository
 import ru.orlovvv.projects.util.TaskStatus
 import javax.inject.Inject
 
 @HiltViewModel
-class PocketProjectsViewModel @Inject constructor(private val pocketProjectsRepository: PocketProjectsRepository) :
+class ProjectsViewModel @Inject constructor(private val projectsRepository: ProjectsRepository) :
     ViewModel() {
 
     var currentPagerTaskStatus = MutableLiveData<TaskStatus>(TaskStatus.TODO)
 
-    private var _inProgressProjects = pocketProjectsRepository.getInProgressProjects()
+    private var _inProgressProjects = projectsRepository.getInProgressProjects()
     val inProgressProjects
         get() = _inProgressProjects
 
@@ -41,35 +41,35 @@ class PocketProjectsViewModel @Inject constructor(private val pocketProjectsRepo
         get() = _currentProjectTasksDone
 
     fun createProject(project: Project) = viewModelScope.launch {
-        pocketProjectsRepository.insertProject(project)
+        projectsRepository.insertProject(project)
     }
 
     fun createTask(task: Task) = viewModelScope.launch {
-        pocketProjectsRepository.insertTask(task)
+        projectsRepository.insertTask(task)
     }
 
     fun getTasks(projectId: Long) {
         _currentProjectTasksTodo =
-            pocketProjectsRepository.getCurrentProjectTasks(projectId, TaskStatus.TODO)
+            projectsRepository.getCurrentProjectTasks(projectId, TaskStatus.TODO)
         _currentProjectTasksDoing =
-            pocketProjectsRepository.getCurrentProjectTasks(projectId, TaskStatus.DOING)
+            projectsRepository.getCurrentProjectTasks(projectId, TaskStatus.DOING)
         _currentProjectTasksDone =
-            pocketProjectsRepository.getCurrentProjectTasks(projectId, TaskStatus.DONE)
+            projectsRepository.getCurrentProjectTasks(projectId, TaskStatus.DONE)
     }
 
     fun deleteTask(task: Task) = viewModelScope.launch {
-        pocketProjectsRepository.deleteTask(task)
+        projectsRepository.deleteTask(task)
     }
 
     fun updateTaskImportance(taskId: Long, isImportant: Boolean) = viewModelScope.launch {
-        pocketProjectsRepository.updateTaskImportance(taskId, isImportant)
+        projectsRepository.updateTaskImportance(taskId, isImportant)
     }
 
     fun updateTaskStatus(taskId: Long, status: TaskStatus) = viewModelScope.launch {
-        pocketProjectsRepository.updateTaskStatus(taskId, status)
+        projectsRepository.updateTaskStatus(taskId, status)
     }
 
     fun updateTaskCrossed(taskId: Long, crossed: Boolean) = viewModelScope.launch {
-        pocketProjectsRepository.updateTaskCrossed(taskId, crossed)
+        projectsRepository.updateTaskCrossed(taskId, crossed)
     }
 }

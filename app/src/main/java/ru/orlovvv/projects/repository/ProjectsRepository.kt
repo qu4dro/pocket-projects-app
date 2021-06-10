@@ -7,7 +7,7 @@ import ru.orlovvv.projects.util.ProjectStatus
 import ru.orlovvv.projects.util.TaskStatus
 import javax.inject.Inject
 
-class PocketProjectsRepository @Inject constructor(private val pocketProjectsDAO: PocketProjectsDAO) {
+class ProjectsRepository @Inject constructor(private val pocketProjectsDAO: PocketProjectsDAO) {
 
     suspend fun insertProject(project: Project) = pocketProjectsDAO.insertProject(project)
 

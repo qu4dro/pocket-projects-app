@@ -8,14 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentBoardDoingBinding
-import ru.orlovvv.projects.ui.PocketProjectsViewModel
+import ru.orlovvv.projects.ui.ProjectsViewModel
 import ru.orlovvv.projects.ui.fragments.boards.adapters.TaskAdapter
 import ru.orlovvv.projects.util.setActions
 
 class BoardDoingFragment : Fragment(R.layout.fragment_board_doing) {
 
     private lateinit var binding: FragmentBoardDoingBinding
-    private val pocketProjectsViewModel: PocketProjectsViewModel by activityViewModels()
+    private val projectsViewModel: ProjectsViewModel by activityViewModels()
     private val taskAdapter = TaskAdapter()
 
     override fun onCreateView(
@@ -34,12 +34,12 @@ class BoardDoingFragment : Fragment(R.layout.fragment_board_doing) {
 
         binding.apply {
             lifecycleOwner = this@BoardDoingFragment
-            viewModel = pocketProjectsViewModel
+            viewModel = projectsViewModel
             rvTasks.adapter = taskAdapter
         }
 
         taskAdapter.setOnPopupClickListener { popUp, task ->
-            popUp.setActions(pocketProjectsViewModel, task, popUp)
+            popUp.setActions(projectsViewModel, task, popUp)
         }
 
     }

@@ -8,13 +8,12 @@ import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.ActivityPocketProjectsBinding
-import timber.log.Timber
 
 @AndroidEntryPoint
 class PocketProjectsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPocketProjectsBinding
-    private val pocketProjectsViewModel: PocketProjectsViewModel by viewModels()
+    private val projectsViewModel: ProjectsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +36,7 @@ class PocketProjectsActivity : AppCompatActivity() {
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 with(topAppBar) {
                     title = when (destination.id) {
-                        R.id.boardContainerFragment -> pocketProjectsViewModel.currentProjectName.value.toString()
+                        R.id.boardContainerFragment -> projectsViewModel.currentProjectName.value.toString()
                         R.id.statisticsFragment -> resources.getString(R.string.statistics)
                         R.id.trashFragment -> resources.getString(R.string.trash_bin)
                         R.id.projectsFragment -> resources.getString(R.string.projects)

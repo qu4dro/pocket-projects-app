@@ -11,10 +11,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentBoardContainerBinding
-import ru.orlovvv.projects.ui.PocketProjectsViewModel
+import ru.orlovvv.projects.ui.ProjectsViewModel
 import ru.orlovvv.projects.ui.dialogs.CreateTaskDialog
 import ru.orlovvv.projects.ui.fragments.boards.adapters.ScreenSlidePagerAdapter
-import ru.orlovvv.projects.util.Constants
 import ru.orlovvv.projects.util.Constants.NUM_PAGES
 import ru.orlovvv.projects.util.TaskStatus
 import timber.log.Timber
@@ -22,7 +21,7 @@ import timber.log.Timber
 class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
 
     private lateinit var binding: FragmentBoardContainerBinding
-    private val pocketProjectsViewModel: PocketProjectsViewModel by activityViewModels()
+    private val projectsViewModel: ProjectsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,8 +48,8 @@ class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
 
         setPagerTabs()
 
-        pocketProjectsViewModel.currentProjectId.observe(viewLifecycleOwner, Observer {
-            pocketProjectsViewModel.getTasks(pocketProjectsViewModel.currentProjectId.value!!)
+        projectsViewModel.currentProjectId.observe(viewLifecycleOwner, Observer {
+            projectsViewModel.getTasks(projectsViewModel.currentProjectId.value!!)
         })
 
     }
@@ -72,9 +71,9 @@ class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
         binding.tabLayoutTop.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 binding.pager.currentItem = tab.position
-                pocketProjectsViewModel.currentPagerTaskStatus.value =
+                projectsViewModel.currentPagerTaskStatus.value =
                     getStatusFromPosition(tab.position)
-                Timber.d(pocketProjectsViewModel.currentPagerTaskStatus.value.toString())
+                Timber.d(projectsViewModel.currentPagerTaskStatus.value.toString())
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {}

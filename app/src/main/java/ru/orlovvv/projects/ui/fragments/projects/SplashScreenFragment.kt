@@ -10,12 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentSplashScreenBinding
-import ru.orlovvv.projects.ui.PocketProjectsViewModel
+import ru.orlovvv.projects.ui.ProjectsViewModel
 
 class SplashScreenFragment : Fragment(R.layout.fragment_splash_screen) {
 
     private lateinit var binding: FragmentSplashScreenBinding
-    private val pocketProjectsViewModel: PocketProjectsViewModel by activityViewModels()
+    private val projectsViewModel: ProjectsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,7 +31,7 @@ class SplashScreenFragment : Fragment(R.layout.fragment_splash_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        pocketProjectsViewModel.inProgressProjects.observe(viewLifecycleOwner, Observer {
+        projectsViewModel.inProgressProjects.observe(viewLifecycleOwner, Observer {
             findNavController().navigate(R.id.action_splashScreenFragment_to_projectsFragment)
         })
 

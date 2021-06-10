@@ -2,7 +2,6 @@ package ru.orlovvv.projects.ui.fragments.boards
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -10,14 +9,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentBoardTodoBinding
-import ru.orlovvv.projects.ui.PocketProjectsViewModel
+import ru.orlovvv.projects.ui.ProjectsViewModel
 import ru.orlovvv.projects.ui.fragments.boards.adapters.TaskAdapter
 import ru.orlovvv.projects.util.setActions
 
 class BoardTodoFragment : Fragment(R.layout.fragment_board_todo) {
 
     private lateinit var binding: FragmentBoardTodoBinding
-    private val pocketProjectsViewModel: PocketProjectsViewModel by activityViewModels()
+    private val projectsViewModel: ProjectsViewModel by activityViewModels()
     private val taskAdapter = TaskAdapter()
 
     override fun onCreateView(
@@ -36,16 +35,16 @@ class BoardTodoFragment : Fragment(R.layout.fragment_board_todo) {
 
         binding.apply {
             lifecycleOwner = this@BoardTodoFragment
-            viewModel = pocketProjectsViewModel
+            viewModel = projectsViewModel
             rvTasks.adapter = taskAdapter
         }
 
-        pocketProjectsViewModel.currentProjectTasksTodo.observe(viewLifecycleOwner, Observer {
+        projectsViewModel.currentProjectTasksTodo.observe(viewLifecycleOwner, Observer {
 
         })
 
         taskAdapter.setOnPopupClickListener { popUp, task ->
-            popUp.setActions(pocketProjectsViewModel, task, popUp)
+            popUp.setActions(projectsViewModel, task, popUp)
         }
 
 
