@@ -8,6 +8,7 @@ import ru.orlovvv.projects.db.entities.Task
 @Dao
 interface PocketProjectsDAO {
 
+    // Projects
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertProject(project: Project): Long
 
@@ -32,5 +33,8 @@ interface PocketProjectsDAO {
     @Query("SELECT * FROM tasks WHERE projectId = :projectId AND status = :status ORDER BY isChecked ASC, isImportant DESC, dateCreated ASC")
     fun getCurrentProjectTasks(projectId: Long, status: String): LiveData<List<Task>>
 
+    //Statistics
+    @Query("SELECT COUNT(*) FROM projects")
+    fun getProjectsCount(): LiveData<Int>
 
 }
