@@ -2,14 +2,17 @@ package ru.orlovvv.projects.ui.fragments.boards
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentBoardTodoBinding
 import ru.orlovvv.projects.ui.PocketProjectsViewModel
 import ru.orlovvv.projects.ui.fragments.boards.adapters.TaskAdapter
+import ru.orlovvv.projects.util.setActions
 
 class BoardTodoFragment : Fragment(R.layout.fragment_board_todo) {
 
@@ -36,6 +39,15 @@ class BoardTodoFragment : Fragment(R.layout.fragment_board_todo) {
             viewModel = pocketProjectsViewModel
             rvTasks.adapter = taskAdapter
         }
+
+        pocketProjectsViewModel.currentProjectTasksTodo.observe(viewLifecycleOwner, Observer {
+
+        })
+
+        taskAdapter.setOnPopupClickListener { popUp, task ->
+            popUp.setActions(pocketProjectsViewModel, task, popUp)
+        }
+
 
     }
 }

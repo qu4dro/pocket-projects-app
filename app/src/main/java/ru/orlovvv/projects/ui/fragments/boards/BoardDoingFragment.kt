@@ -10,6 +10,7 @@ import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentBoardDoingBinding
 import ru.orlovvv.projects.ui.PocketProjectsViewModel
 import ru.orlovvv.projects.ui.fragments.boards.adapters.TaskAdapter
+import ru.orlovvv.projects.util.setActions
 
 class BoardDoingFragment : Fragment(R.layout.fragment_board_doing) {
 
@@ -35,6 +36,10 @@ class BoardDoingFragment : Fragment(R.layout.fragment_board_doing) {
             lifecycleOwner = this@BoardDoingFragment
             viewModel = pocketProjectsViewModel
             rvTasks.adapter = taskAdapter
+        }
+
+        taskAdapter.setOnPopupClickListener { popUp, task ->
+            popUp.setActions(pocketProjectsViewModel, task, popUp)
         }
 
     }

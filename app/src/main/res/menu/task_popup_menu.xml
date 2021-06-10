@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/moveToTODO"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/move_to_todo" />
+
+    <item
+        android:id="@+id/moveToDOING"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/move_to_doing" />
+
+    <item
+        android:id="@+id/moveToDONE"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/move_to_done" />
+
+    <item
+        android:id="@+id/markTaskAsImportant"
+        android:checkable="true"
+        android:checked="false"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/mark_as_important" />
+
+    <item
+        android:id="@+id/crossTask"
+        android:checkable="true"
+        android:checked="false"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/crossed_out" />
+
+    <item
+        android:id="@+id/deleteTask"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/delete_task" />
+
+</menu>

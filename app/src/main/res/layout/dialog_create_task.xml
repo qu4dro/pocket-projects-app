@@ -25,7 +25,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textview.MaterialTextView
-                    style="@style/TextStyleBoldHead"
+                    style="@style/TextStyleMediumHead"
                     android:id="@+id/tv_dialog_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -64,6 +64,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
+                    android:textColor="?attr/colorOnSecondary"
                     android:text="@string/create_task"
                     android:layout_marginTop="64dp"
                     android:id="@+id/btn_create_task"

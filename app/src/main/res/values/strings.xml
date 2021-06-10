@@ -11,4 +11,10 @@
     <string name="create_project">Create project</string>
     <string name="project_name">Project name</string>
     <string name="project_description">Project description</string>
+    <string name="delete_task">Delete</string>
+    <string name="mark_as_important">Important</string>
+    <string name="move_to_todo">Move to TODO</string>
+    <string name="move_to_done">Move to DONE</string>
+    <string name="move_to_doing">Move to DOING</string>
+    <string name="crossed_out">Crossed out</string>
 </resources>

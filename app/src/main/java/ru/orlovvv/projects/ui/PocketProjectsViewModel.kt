@@ -56,4 +56,20 @@ class PocketProjectsViewModel @Inject constructor(private val pocketProjectsRepo
         _currentProjectTasksDone =
             pocketProjectsRepository.getCurrentProjectTasks(projectId, TaskStatus.DONE)
     }
+
+    fun deleteTask(task: Task) = viewModelScope.launch {
+        pocketProjectsRepository.deleteTask(task)
+    }
+
+    fun updateTaskImportance(taskId: Long, isImportant: Boolean) = viewModelScope.launch {
+        pocketProjectsRepository.updateTaskImportance(taskId, isImportant)
+    }
+
+    fun updateTaskStatus(taskId: Long, status: TaskStatus) = viewModelScope.launch {
+        pocketProjectsRepository.updateTaskStatus(taskId, status)
+    }
+
+    fun updateTaskCrossed(taskId: Long, crossed: Boolean) = viewModelScope.launch {
+        pocketProjectsRepository.updateTaskCrossed(taskId, crossed)
+    }
 }

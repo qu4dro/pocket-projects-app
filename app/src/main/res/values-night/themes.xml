@@ -21,7 +21,8 @@
         <!-- Customize your theme here. -->
 
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
-        <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:popupMenuStyle">@style/PopupMenuStyle</item>
+        <item name="android:fontFamily">@font/rubik_medium</item>
+        <item name="fontFamily">@font/rubik_medium</item>
     </style>
 </resources>

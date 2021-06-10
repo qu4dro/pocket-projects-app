@@ -13,6 +13,17 @@ class PocketProjectsRepository @Inject constructor(private val pocketProjectsDAO
 
     suspend fun insertTask(task: Task) = pocketProjectsDAO.insertTask(task)
 
+    suspend fun deleteTask(task: Task) = pocketProjectsDAO.deleteTask(task)
+
+    suspend fun updateTaskImportance(taskId: Long, isImportant: Boolean) =
+        pocketProjectsDAO.updateTaskImportance(taskId, isImportant)
+
+    suspend fun updateTaskStatus(taskId: Long, status: TaskStatus) =
+        pocketProjectsDAO.updateTaskStatus(taskId, status.toString())
+
+    suspend fun updateTaskCrossed(taskId: Long, crossed: Boolean) =
+        pocketProjectsDAO.updateTaskChecked(taskId, crossed)
+
     fun getInProgressProjects() =
         pocketProjectsDAO.getInProgressProjects(ProjectStatus.IN_PROGRESS.toString())
 

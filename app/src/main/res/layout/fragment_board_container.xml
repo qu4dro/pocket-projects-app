@@ -11,9 +11,11 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.tabs.TabLayout
+            app:tabGravity="fill"
             android:id="@+id/tab_layout_top"
             style="@style/NavigationTabStyle"
             android:layout_width="match_parent"
+            app:tabMaxWidth="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/pager"
             app:layout_constraintStart_toStartOf="parent"
