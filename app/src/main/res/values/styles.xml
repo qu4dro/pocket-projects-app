@@ -89,6 +89,7 @@
     </style>
 
     <style name="PopupMenuStyle" parent="@android:style/Widget.PopupMenu">
+        <item name="android:popupElevation">16dp</item>
         <item name="android:popupBackground">@drawable/rounded_popup</item>
     </style>
 </resources>
