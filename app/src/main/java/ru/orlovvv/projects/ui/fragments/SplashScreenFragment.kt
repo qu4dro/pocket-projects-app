@@ -1,4 +1,4 @@
-package ru.orlovvv.projects.ui.fragments.projects
+package ru.orlovvv.projects.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
