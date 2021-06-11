@@ -28,7 +28,7 @@ interface PocketProjectsDAO {
     suspend fun updateTaskStatus(taskId: Long, status: String): Int
 
     @Query("SELECT * FROM projects WHERE status = :status")
-    fun getInProgressProjects(status: String): LiveData<List<Project>>
+    fun getProjectsByStatus(status: String): LiveData<List<Project>>
 
     @Query("SELECT * FROM tasks WHERE projectId = :projectId AND status = :status ORDER BY isChecked ASC, isImportant DESC, dateCreated ASC")
     fun getCurrentProjectTasks(projectId: Long, status: String): LiveData<List<Task>>

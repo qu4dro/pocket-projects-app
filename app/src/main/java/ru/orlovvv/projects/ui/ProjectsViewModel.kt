@@ -6,6 +6,7 @@ import kotlinx.coroutines.launch
 import ru.orlovvv.projects.db.entities.Project
 import ru.orlovvv.projects.db.entities.Task
 import ru.orlovvv.projects.repository.ProjectsRepository
+import ru.orlovvv.projects.util.ProjectStatus
 import ru.orlovvv.projects.util.TaskStatus
 import javax.inject.Inject
 
@@ -15,9 +16,18 @@ class ProjectsViewModel @Inject constructor(private val projectsRepository: Proj
 
     var currentPagerTaskStatus = MutableLiveData<TaskStatus>(TaskStatus.TODO)
 
-    private var _inProgressProjects = projectsRepository.getInProgressProjects()
+    private var _inProgressProjects =
+        projectsRepository.getProjectsByStatus(ProjectStatus.IN_PROGRESS)
     val inProgressProjects
         get() = _inProgressProjects
+
+    private var _archivedProjects = projectsRepository.getProjectsByStatus(ProjectStatus.ARCHIVED)
+    val archivedProjects
+        get() = _archivedProjects
+
+    private var _trashedProjects = projectsRepository.getProjectsByStatus(ProjectStatus.ARCHIVED)
+    val trashedProjects
+        get() = _trashedProjects
 
     private var _currentProjectId = MutableLiveData<Long>()
     val currentProjectId

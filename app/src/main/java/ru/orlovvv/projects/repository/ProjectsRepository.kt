@@ -24,8 +24,8 @@ class ProjectsRepository @Inject constructor(private val pocketProjectsDAO: Pock
     suspend fun updateTaskCrossed(taskId: Long, crossed: Boolean) =
         pocketProjectsDAO.updateTaskChecked(taskId, crossed)
 
-    fun getInProgressProjects() =
-        pocketProjectsDAO.getInProgressProjects(ProjectStatus.IN_PROGRESS.toString())
+    fun getProjectsByStatus(status: ProjectStatus) =
+        pocketProjectsDAO.getProjectsByStatus(status.toString())
 
     fun getCurrentProjectTasks(projectId: Long, status: TaskStatus) =
         pocketProjectsDAO.getCurrentProjectTasks(projectId, status.toString())
