@@ -54,7 +54,7 @@ class CreateProjectDialog : BottomSheetDialogFragment() {
                     binding.etProjectName.text.toString(),
                     binding.etProjectDescription.text.toString(),
                     false,
-                    ProjectStatus.ARCHIVED.toString()
+                    ProjectStatus.IN_PROGRESS.toString()
                 )
             )
         }

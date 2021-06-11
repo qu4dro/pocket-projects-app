@@ -1,6 +1,7 @@
 package ru.orlovvv.projects.util
 
 import android.graphics.Rect
+import android.os.Build
 import android.view.Gravity
 import android.view.View
 import android.widget.PopupMenu
@@ -9,6 +10,7 @@ import ru.orlovvv.projects.R
 import ru.orlovvv.projects.db.entities.Task
 import ru.orlovvv.projects.ui.ProjectsViewModel
 import ru.orlovvv.projects.util.Constants.SPACING
+import java.lang.reflect.Method
 
 fun RecyclerView.setStickersSpacing() {
     this.addItemDecoration(object : RecyclerView.ItemDecoration() {
@@ -28,7 +30,7 @@ fun PopupMenu.setActions(
     task: Task,
     popUp: PopupMenu
 ) {
-    popUp.setForceShowIcon(true)
+    popUp.showIcons()
     popUp.show()
     val checkBoxImportant = popUp.menu.findItem(R.id.markTaskAsImportant)
     val checkBoxCrossed = popUp.menu.findItem(R.id.crossTask)
@@ -64,6 +66,32 @@ fun PopupMenu.setActions(
                 true
             }
             else -> false
+        }
+    }
+}
+
+fun  PopupMenu.showIcons() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        this.setForceShowIcon(true)
+    }else{
+        try {
+            val fields = this.javaClass.declaredFields
+            for (field in fields) {
+                if ("mPopup" == field.name) {
+                    field.isAccessible = true
+                    val menuPopupHelper = field[this]
+                    val classPopupHelper =
+                        Class.forName(menuPopupHelper.javaClass.name)
+                    val setForceIcons: Method = classPopupHelper.getMethod(
+                        "setForceShowIcon",
+                        Boolean::class.javaPrimitiveType
+                    )
+                    setForceIcons.invoke(menuPopupHelper, true)
+                    break
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 }
