@@ -1,7 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.PocketProjects" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
         <item name="colorPrimary">@color/blue_700</item>
         <item name="colorPrimaryVariant">@color/blue_800</item>
         <item name="colorSecondary">@color/orange_500</item>
@@ -10,7 +9,7 @@
         <item name="android:colorBackground">@color/blue_50</item>
         <item name="colorError">@color/red_400</item>
 
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/black_900</item>
         <item name="android:textColor">@color/black_900</item>
         <item name="android:textColorPrimary">@color/black_900</item>
         <item name="android:textColorSecondary">@color/black_900_alpha_060</item>
@@ -19,6 +18,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="android:popupMenuStyle">@style/PopupMenuStyle</item>
         <item name="android:fontFamily">@font/rubik_medium</item>
         <item name="fontFamily">@font/rubik_medium</item>
     </style>
