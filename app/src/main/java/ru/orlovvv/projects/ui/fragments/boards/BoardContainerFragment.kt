@@ -1,14 +1,18 @@
 package ru.orlovvv.projects.ui.fragments.boards
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentBoardContainerBinding
 import ru.orlovvv.projects.ui.ProjectsViewModel
@@ -51,6 +55,15 @@ class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
         projectsViewModel.currentProjectId.observe(viewLifecycleOwner, Observer {
             projectsViewModel.getTasks(projectsViewModel.currentProjectId.value!!)
         })
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition =
+            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+        sharedElementReturnTransition =
+            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
 
     }
 

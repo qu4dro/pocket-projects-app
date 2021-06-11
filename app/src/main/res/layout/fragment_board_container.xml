@@ -11,15 +11,15 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.tabs.TabLayout
-            app:tabGravity="fill"
             android:id="@+id/tab_layout_top"
             style="@style/NavigationTabStyle"
             android:layout_width="match_parent"
-            app:tabMaxWidth="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/pager"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabGravity="fill"
+            app:tabMaxWidth="0dp" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/pager"
@@ -36,6 +36,7 @@
             android:layout_margin="16dp"
             android:elevation="8dp"
             android:text="Add task"
+            android:transitionName="fab_transition"
             app:icon="@drawable/ic_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -24,7 +24,7 @@
         android:id="@+id/projectsFragment"
         android:name="ru.orlovvv.projects.ui.fragments.projects.ProjectsFragment"
         android:label="ProjectsFragment"
-        tools:layout="@layout/fragment_projects" >
+        tools:layout="@layout/fragment_projects">
         <action
             android:id="@+id/action_projectsFragment_to_boardContainerFragment"
             app:destination="@id/boardContainerFragment" />
@@ -37,6 +37,7 @@
         <action
             android:id="@+id/action_splashScreenFragment_to_projectsFragment"
             app:destination="@id/projectsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
             app:popUpTo="@id/splashScreenFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -49,7 +50,11 @@
         android:id="@+id/trashFragment"
         android:name="ru.orlovvv.projects.ui.fragments.TrashFragment"
         android:label="TrashFragment"
-        tools:layout="@layout/fragment_trash" />
+        tools:layout="@layout/fragment_trash" >
+        <action
+            android:id="@+id/action_trashFragment_to_boardContainerFragment"
+            app:destination="@id/boardContainerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/boardContainerFragment"
         android:name="ru.orlovvv.projects.ui.fragments.boards.BoardContainerFragment"
@@ -58,6 +63,10 @@
     <fragment
         android:id="@+id/archiveFragment"
         android:name="ru.orlovvv.projects.ui.fragments.ArchiveFragment"
-        tools:layout="@layout/fragment_archive"
-        android:label="ArchiveFragment" />
+        android:label="ArchiveFragment"
+        tools:layout="@layout/fragment_archive" >
+        <action
+            android:id="@+id/action_archiveFragment_to_boardContainerFragment"
+            app:destination="@id/boardContainerFragment" />
+    </fragment>
 </navigation>

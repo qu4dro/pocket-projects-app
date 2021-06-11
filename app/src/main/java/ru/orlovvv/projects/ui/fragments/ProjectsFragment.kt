@@ -1,12 +1,14 @@
 package ru.orlovvv.projects.ui.fragments
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentProjectsBinding
@@ -51,7 +53,8 @@ class ProjectsFragment : Fragment(R.layout.fragment_projects) {
                 currentProjectId.value = it.id
                 currentProjectName.value = it.name
             }
-            findNavController().navigate(R.id.action_projectsFragment_to_boardContainerFragment)
+            val extras = FragmentNavigatorExtras(binding.fabCreateProject to "fab_transition")
+            findNavController().navigate(R.id.action_projectsFragment_to_boardContainerFragment, null, null, extras)
         }
     }
 

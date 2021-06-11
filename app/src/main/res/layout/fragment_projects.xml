@@ -30,6 +30,7 @@
             app:spanCount="2" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:transitionName="fab_transition"
             android:id="@+id/fab_create_project"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
