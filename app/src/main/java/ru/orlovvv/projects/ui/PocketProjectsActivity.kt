@@ -3,6 +3,7 @@ package ru.orlovvv.projects.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.content.res.ResourcesCompat
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,6 +33,8 @@ class PocketProjectsActivity : AppCompatActivity() {
             val navController =
                 Navigation.findNavController(this@PocketProjectsActivity, R.id.nav_host_fragment)
             navigationView.setupWithNavController(navController)
+//            navigationView.setBackgroundColor(ResourcesCompat.getDrawable(resources.getDrawable(R.drawable.drawer_header_background))
+
 
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 with(topAppBar) {

@@ -8,14 +8,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/drawer_header_background"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.textview.MaterialTextView
             android:padding="16dp"
             android:textSize="18sp"
-            android:text="Тут будет что-то, чего я еще не знаю"
+            android:text="@string/app_name"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

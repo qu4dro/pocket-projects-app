@@ -18,4 +18,5 @@
     <string name="move_to_doing">Move to DOING</string>
     <string name="crossed_out">Crossed out</string>
     <string name="important">Important</string>
+    <string name="archive">Archive</string>
 </resources>
