@@ -9,6 +9,7 @@ import java.text.DateFormat
 data class Project(
     val name: String,
     val description: String,
+    val isImportant: Boolean,
     val status: String = ProjectStatus.IN_PROGRESS.toString()
 ) {
     @PrimaryKey(autoGenerate = true)

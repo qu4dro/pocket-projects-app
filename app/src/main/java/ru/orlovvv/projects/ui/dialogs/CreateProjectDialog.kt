@@ -51,7 +51,8 @@ class CreateProjectDialog : BottomSheetDialogFragment() {
             createProject(
                 Project(
                     binding.etProjectName.text.toString(),
-                    binding.etProjectDescription.text.toString()
+                    binding.etProjectDescription.text.toString(),
+                    false
                 )
             )
         }

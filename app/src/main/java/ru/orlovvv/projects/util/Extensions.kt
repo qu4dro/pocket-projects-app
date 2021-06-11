@@ -1,6 +1,7 @@
 package ru.orlovvv.projects.util
 
 import android.graphics.Rect
+import android.view.Gravity
 import android.view.View
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +28,7 @@ fun PopupMenu.setActions(
     task: Task,
     popUp: PopupMenu
 ) {
+    popUp.setForceShowIcon(true)
     popUp.show()
     val checkBoxImportant = popUp.menu.findItem(R.id.markTaskAsImportant)
     val checkBoxCrossed = popUp.menu.findItem(R.id.crossTask)

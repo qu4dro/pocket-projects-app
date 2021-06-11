@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/groupStatus">
+        <item
+            android:id="@+id/moveToTODO"
+            android:title="@string/move_to_todo" />
 
-    <item
-        android:id="@+id/moveToTODO"
-        android:icon="@drawable/ic_delete"
-        android:title="@string/move_to_todo" />
+        <item
+            android:id="@+id/moveToDOING"
+            android:title="@string/move_to_doing" />
 
-    <item
-        android:id="@+id/moveToDOING"
-        android:icon="@drawable/ic_delete"
-        android:title="@string/move_to_doing" />
+        <item
+            android:id="@+id/moveToDONE"
+            android:title="@string/move_to_done" />
+    </group>
 
-    <item
-        android:id="@+id/moveToDONE"
-        android:icon="@drawable/ic_delete"
-        android:title="@string/move_to_done" />
+    <group android:id="@+id/groupProperties">
+        <item
+            android:id="@+id/markTaskAsImportant"
+            android:checkable="true"
+            android:checked="false"
+            android:icon="@drawable/ic_important"
+            android:title="@string/mark_as_important" />
 
-    <item
-        android:id="@+id/markTaskAsImportant"
-        android:checkable="true"
-        android:checked="false"
-        android:icon="@drawable/ic_delete"
-        android:title="@string/mark_as_important" />
+        <item
+            android:id="@+id/crossTask"
+            android:checkable="true"
+            android:checked="false"
+            android:icon="@drawable/ic_strikethrough"
+            android:title="@string/strikethrough" />
 
-    <item
-        android:id="@+id/crossTask"
-        android:checkable="true"
-        android:checked="false"
-        android:icon="@drawable/ic_delete"
-        android:title="@string/crossed_out" />
-
-    <item
-        android:id="@+id/deleteTask"
-        android:icon="@drawable/ic_delete"
-        android:title="@string/delete_task" />
-
+        <item
+            android:id="@+id/deleteTask"
+            android:icon="@drawable/ic_delete"
+            android:title="@string/delete_task" />
+    </group>
 </menu>

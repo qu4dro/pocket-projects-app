@@ -55,4 +55,9 @@
         android:name="ru.orlovvv.projects.ui.fragments.boards.BoardContainerFragment"
         android:label="BoardContainerFragment"
         tools:layout="@layout/fragment_board_container" />
+    <fragment
+        android:id="@+id/archiveFragment"
+        android:name="ru.orlovvv.projects.ui.fragments.ArchiveFragment"
+        tools:layout="@layout/fragment_archive"
+        android:label="ArchiveFragment" />
 </navigation>

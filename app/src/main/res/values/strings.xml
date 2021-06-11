@@ -19,4 +19,5 @@
     <string name="crossed_out">Crossed out</string>
     <string name="important">Important</string>
     <string name="archive">Archive</string>
+    <string name="strikethrough">Strikethrough</string>
 </resources>
