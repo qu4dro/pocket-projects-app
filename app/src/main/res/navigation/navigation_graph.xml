@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_board_todo" />
     <fragment
         android:id="@+id/projectsFragment"
-        android:name="ru.orlovvv.projects.ui.fragments.projects.ProjectsFragment"
+        android:name="ru.orlovvv.projects.ui.fragments.ProjectsFragment"
         android:label="ProjectsFragment"
         tools:layout="@layout/fragment_projects">
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="ru.orlovvv.projects.ui.fragments.projects.SplashScreenFragment"
+        android:name="ru.orlovvv.projects.ui.fragments.SplashScreenFragment"
         android:label="SplashScreenFragment"
         tools:layout="@layout/fragment_splash_screen">
         <action

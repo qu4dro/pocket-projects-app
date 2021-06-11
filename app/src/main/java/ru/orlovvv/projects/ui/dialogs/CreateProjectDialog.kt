@@ -11,6 +11,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ru.orlovvv.projects.databinding.DialogCreateProjectBinding
 import ru.orlovvv.projects.db.entities.Project
 import ru.orlovvv.projects.ui.ProjectsViewModel
+import ru.orlovvv.projects.util.ProjectStatus
 
 class CreateProjectDialog : BottomSheetDialogFragment() {
 
@@ -52,7 +53,8 @@ class CreateProjectDialog : BottomSheetDialogFragment() {
                 Project(
                     binding.etProjectName.text.toString(),
                     binding.etProjectDescription.text.toString(),
-                    false
+                    false,
+                    ProjectStatus.ARCHIVED.toString()
                 )
             )
         }
