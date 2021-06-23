@@ -25,7 +25,7 @@ class ProjectsViewModel @Inject constructor(private val projectsRepository: Proj
     val archivedProjects
         get() = _archivedProjects
 
-    private var _trashedProjects = projectsRepository.getProjectsByStatus(ProjectStatus.ARCHIVED)
+    private var _trashedProjects = projectsRepository.getProjectsByStatus(ProjectStatus.TRASHED)
     val trashedProjects
         get() = _trashedProjects
 
@@ -77,6 +77,10 @@ class ProjectsViewModel @Inject constructor(private val projectsRepository: Proj
 
     fun updateTaskStatus(taskId: Long, status: TaskStatus) = viewModelScope.launch {
         projectsRepository.updateTaskStatus(taskId, status)
+    }
+
+    fun updateProjectStatus(projectId: Long, newStatus: ProjectStatus) = viewModelScope.launch {
+        projectsRepository.updateProjectsStatus(projectId, newStatus)
     }
 
     fun updateTaskCrossed(taskId: Long, crossed: Boolean) = viewModelScope.launch {

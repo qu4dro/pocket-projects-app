@@ -12,6 +12,7 @@ import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentArchiveBinding
 import ru.orlovvv.projects.ui.ProjectsViewModel
 import ru.orlovvv.projects.ui.fragments.boards.adapters.ProjectAdapter
+import ru.orlovvv.projects.util.setProjectActions
 import ru.orlovvv.projects.util.setStickersSpacing
 
 class ArchiveFragment : Fragment(R.layout.fragment_archive) {
@@ -48,6 +49,9 @@ class ArchiveFragment : Fragment(R.layout.fragment_archive) {
             }
 
             findNavController().navigate(R.id.action_archiveFragment_to_boardContainerFragment)
+        }
+        projectAdapter.setOnPopupClickListener { popUp, project ->
+            popUp.setProjectActions(projectsViewModel, project, popUp)
         }
     }
 }

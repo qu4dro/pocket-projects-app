@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import ru.orlovvv.projects.R
+import ru.orlovvv.projects.db.entities.Project
 import ru.orlovvv.projects.db.entities.Task
 import ru.orlovvv.projects.ui.ProjectsViewModel
 import ru.orlovvv.projects.util.Constants.SPACING
@@ -25,13 +26,40 @@ fun RecyclerView.setStickersSpacing() {
     })
 }
 
-fun PopupMenu.setActions(
+fun PopupMenu.setProjectActions(
+    projectsViewModel: ProjectsViewModel,
+    project: Project,
+    popUp: PopupMenu
+) {
+    popUp.show()
+    popUp.showIcons()
+    this.setOnMenuItemClickListener {
+        when (it.itemId) {
+            R.id.deleteProject -> {
+                projectsViewModel.updateProjectStatus(project.id!!, ProjectStatus.TRASHED)
+                true
+            }
+            R.id.archiveProject -> {
+                projectsViewModel.updateProjectStatus(project.id!!, ProjectStatus.ARCHIVED)
+                true
+            }
+
+            R.id.restoreProject -> {
+                projectsViewModel.updateProjectStatus(project.id!!, ProjectStatus.IN_PROGRESS)
+                true
+            }
+            else -> false
+        }
+    }
+}
+
+fun PopupMenu.setTaskActions(
     projectsViewModel: ProjectsViewModel,
     task: Task,
     popUp: PopupMenu
 ) {
-    popUp.showIcons()
     popUp.show()
+    popUp.showIcons()
     val checkBoxImportant = popUp.menu.findItem(R.id.markTaskAsImportant)
     val checkBoxCrossed = popUp.menu.findItem(R.id.crossTask)
     checkBoxImportant.isChecked = task.isImportant

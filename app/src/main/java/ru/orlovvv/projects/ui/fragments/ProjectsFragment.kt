@@ -1,7 +1,6 @@
 package ru.orlovvv.projects.ui.fragments
 
 import android.os.Bundle
-import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +14,7 @@ import ru.orlovvv.projects.databinding.FragmentProjectsBinding
 import ru.orlovvv.projects.ui.ProjectsViewModel
 import ru.orlovvv.projects.ui.dialogs.CreateProjectDialog
 import ru.orlovvv.projects.ui.fragments.boards.adapters.ProjectAdapter
+import ru.orlovvv.projects.util.setProjectActions
 import ru.orlovvv.projects.util.setStickersSpacing
 
 class ProjectsFragment : Fragment(R.layout.fragment_projects) {
@@ -55,6 +55,10 @@ class ProjectsFragment : Fragment(R.layout.fragment_projects) {
             }
             val extras = FragmentNavigatorExtras(binding.fabCreateProject to "fab_transition")
             findNavController().navigate(R.id.action_projectsFragment_to_boardContainerFragment, null, null, extras)
+        }
+
+        projectAdapter.setOnPopupClickListener { popUp, project ->
+            popUp.setProjectActions(projectsViewModel, project, popUp)
         }
     }
 

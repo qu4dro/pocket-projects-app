@@ -21,4 +21,6 @@
     <string name="archive">Archive</string>
     <string name="strikethrough">Strikethrough</string>
     <string name="delete_all">Delete all</string>
+    <string name="delete_project">Delete</string>
+    <string name="restore">Restore</string>
 </resources>

@@ -18,6 +18,9 @@ interface PocketProjectsDAO {
     @Delete
     suspend fun deleteTask(task: Task)
 
+    @Delete
+    suspend fun deleteProject(project: Project)
+
     @Query("UPDATE tasks SET isImportant = :isImportant WHERE id = :taskId")
     suspend fun updateTaskImportance(taskId: Long, isImportant: Boolean): Int
 
@@ -26,6 +29,9 @@ interface PocketProjectsDAO {
 
     @Query("UPDATE tasks SET status = :status WHERE id = :taskId")
     suspend fun updateTaskStatus(taskId: Long, status: String): Int
+
+    @Query("UPDATE projects SET status = :newStatus WHERE id = :projectId")
+    suspend fun updateProjectStatus(projectId: Long, newStatus: String): Int
 
     @Query("SELECT * FROM projects WHERE status = :status")
     fun getProjectsByStatus(status: String): LiveData<List<Project>>

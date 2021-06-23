@@ -12,6 +12,7 @@ import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentTrashBinding
 import ru.orlovvv.projects.ui.ProjectsViewModel
 import ru.orlovvv.projects.ui.fragments.boards.adapters.ProjectAdapter
+import ru.orlovvv.projects.util.setProjectActions
 import ru.orlovvv.projects.util.setStickersSpacing
 
 class TrashFragment : Fragment(R.layout.fragment_trash) {
@@ -46,7 +47,17 @@ class TrashFragment : Fragment(R.layout.fragment_trash) {
                 currentProjectId.value = it.id
                 currentProjectName.value = it.name
             }
+            val extras = FragmentNavigatorExtras(binding.fabDeleteAll to "fab_transition")
+            findNavController().navigate(
+                R.id.action_trashFragment_to_boardContainerFragment,
+                null,
+                null,
+                extras
+            )
 
+        }
+        projectAdapter.setOnPopupClickListener { popUp, project ->
+            popUp.setProjectActions(projectsViewModel, project, popUp)
         }
     }
 }

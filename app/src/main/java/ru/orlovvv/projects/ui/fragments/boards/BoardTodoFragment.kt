@@ -11,7 +11,7 @@ import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentBoardTodoBinding
 import ru.orlovvv.projects.ui.ProjectsViewModel
 import ru.orlovvv.projects.ui.fragments.boards.adapters.TaskAdapter
-import ru.orlovvv.projects.util.setActions
+import ru.orlovvv.projects.util.setTaskActions
 
 class BoardTodoFragment : Fragment(R.layout.fragment_board_todo) {
 
@@ -44,7 +44,7 @@ class BoardTodoFragment : Fragment(R.layout.fragment_board_todo) {
         })
 
         taskAdapter.setOnPopupClickListener { popUp, task ->
-            popUp.setActions(projectsViewModel, task, popUp)
+            popUp.setTaskActions(projectsViewModel, task, popUp)
         }
 
 
