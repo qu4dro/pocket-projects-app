@@ -14,7 +14,9 @@ import ru.orlovvv.projects.ui.ProjectsViewModel
 
 class SplashScreenFragment : Fragment(R.layout.fragment_splash_screen) {
 
-    private lateinit var binding: FragmentSplashScreenBinding
+    private var _binding: FragmentSplashScreenBinding? = null
+    val binding
+        get() = _binding!!
     private val projectsViewModel: ProjectsViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -23,7 +25,7 @@ class SplashScreenFragment : Fragment(R.layout.fragment_splash_screen) {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentSplashScreenBinding.inflate(layoutInflater)
+        _binding = FragmentSplashScreenBinding.inflate(layoutInflater)
 
         return binding.root
     }
@@ -34,7 +36,11 @@ class SplashScreenFragment : Fragment(R.layout.fragment_splash_screen) {
         projectsViewModel.inProgressProjects.observe(viewLifecycleOwner, Observer {
             findNavController().navigate(R.id.action_splashScreenFragment_to_projectsFragment)
         })
-
-
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

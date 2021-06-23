@@ -6,13 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import ru.orlovvv.projects.R
 import ru.orlovvv.projects.databinding.FragmentBoardContainerBinding
 import ru.orlovvv.projects.ui.ProjectsViewModel
@@ -24,7 +21,9 @@ import timber.log.Timber
 
 class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
 
-    private lateinit var binding: FragmentBoardContainerBinding
+    private var _binding: FragmentBoardContainerBinding? = null
+    val binding
+        get() = _binding!!
     private val projectsViewModel: ProjectsViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -33,7 +32,7 @@ class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentBoardContainerBinding.inflate(layoutInflater)
+        _binding = FragmentBoardContainerBinding.inflate(layoutInflater)
 
         binding.apply {
             pager.offscreenPageLimit = NUM_PAGES as Int
@@ -109,6 +108,11 @@ class BoardContainerFragment : Fragment(R.layout.fragment_board_container) {
             2 -> TaskStatus.DONE
             else -> TaskStatus.TODO
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

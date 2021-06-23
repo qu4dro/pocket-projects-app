@@ -17,9 +17,11 @@ import ru.orlovvv.projects.util.setStickersSpacing
 
 class ArchiveFragment : Fragment(R.layout.fragment_archive) {
 
-    private lateinit var binding: FragmentArchiveBinding
+    private var _binding: FragmentArchiveBinding? = null
+    val binding
+        get() = _binding!!
     private val projectsViewModel: ProjectsViewModel by activityViewModels()
-    private var projectAdapter = ProjectAdapter()
+    private val projectAdapter = ProjectAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +29,7 @@ class ArchiveFragment : Fragment(R.layout.fragment_archive) {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentArchiveBinding.inflate(layoutInflater)
+        _binding = FragmentArchiveBinding.inflate(layoutInflater)
 
         return binding.root
     }
@@ -53,5 +55,10 @@ class ArchiveFragment : Fragment(R.layout.fragment_archive) {
         projectAdapter.setOnPopupClickListener { popUp, project ->
             popUp.setProjectActions(projectsViewModel, project, popUp)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

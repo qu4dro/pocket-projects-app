@@ -14,7 +14,9 @@ import ru.orlovvv.projects.util.setTaskActions
 
 class BoardDoneFragment : Fragment(R.layout.fragment_board_done) {
 
-    private lateinit var binding: FragmentBoardDoneBinding
+    private var _binding: FragmentBoardDoneBinding? = null
+    val binding
+        get() = _binding!!
     private val projectsViewModel: ProjectsViewModel by activityViewModels()
     private val taskAdapter = TaskAdapter()
 
@@ -24,7 +26,7 @@ class BoardDoneFragment : Fragment(R.layout.fragment_board_done) {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentBoardDoneBinding.inflate(layoutInflater)
+        _binding = FragmentBoardDoneBinding.inflate(layoutInflater)
 
         return binding.root
     }
@@ -41,6 +43,10 @@ class BoardDoneFragment : Fragment(R.layout.fragment_board_done) {
         taskAdapter.setOnPopupClickListener { popUp, task ->
             popUp.setTaskActions(projectsViewModel, task, popUp)
         }
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

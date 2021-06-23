@@ -19,9 +19,11 @@ import ru.orlovvv.projects.util.setStickersSpacing
 
 class ProjectsFragment : Fragment(R.layout.fragment_projects) {
 
-    private lateinit var binding: FragmentProjectsBinding
+    private var _binding: FragmentProjectsBinding? = null
+    val binding
+        get() = _binding!!
     private val projectsViewModel: ProjectsViewModel by activityViewModels()
-    private var projectAdapter = ProjectAdapter()
+    private val projectAdapter = ProjectAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,7 +31,7 @@ class ProjectsFragment : Fragment(R.layout.fragment_projects) {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentProjectsBinding.inflate(layoutInflater)
+        _binding = FragmentProjectsBinding.inflate(layoutInflater)
 
         return binding.root
     }
@@ -54,7 +56,12 @@ class ProjectsFragment : Fragment(R.layout.fragment_projects) {
                 currentProjectName.value = it.name
             }
             val extras = FragmentNavigatorExtras(binding.fabCreateProject to "fab_transition")
-            findNavController().navigate(R.id.action_projectsFragment_to_boardContainerFragment, null, null, extras)
+            findNavController().navigate(
+                R.id.action_projectsFragment_to_boardContainerFragment,
+                null,
+                null,
+                extras
+            )
         }
 
         projectAdapter.setOnPopupClickListener { popUp, project ->
@@ -65,5 +72,10 @@ class ProjectsFragment : Fragment(R.layout.fragment_projects) {
     private fun openCreateProjectDialog() {
         val dialog = CreateProjectDialog()
         dialog.show(requireActivity().supportFragmentManager, "CreateProjectDialog")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -3,7 +3,6 @@ package ru.orlovvv.projects.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.core.content.res.ResourcesCompat
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -13,13 +12,15 @@ import ru.orlovvv.projects.databinding.ActivityPocketProjectsBinding
 @AndroidEntryPoint
 class PocketProjectsActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityPocketProjectsBinding
+    private var _binding: ActivityPocketProjectsBinding? = null
+    val binding
+        get() = _binding!!
     private val projectsViewModel: ProjectsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityPocketProjectsBinding.inflate(layoutInflater)
+        _binding = ActivityPocketProjectsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setNavigation()
@@ -50,6 +51,11 @@ class PocketProjectsActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

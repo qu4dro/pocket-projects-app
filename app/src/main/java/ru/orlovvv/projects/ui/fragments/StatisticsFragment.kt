@@ -11,7 +11,9 @@ import ru.orlovvv.projects.databinding.FragmentStatisticsBinding
 
 class StatisticsFragment : Fragment(R.layout.fragment_statistics) {
 
-    private lateinit var binding: FragmentStatisticsBinding
+    private var _binding: FragmentStatisticsBinding? = null
+    val binding
+        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,7 +21,7 @@ class StatisticsFragment : Fragment(R.layout.fragment_statistics) {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentStatisticsBinding.inflate(layoutInflater)
+        _binding = FragmentStatisticsBinding.inflate(layoutInflater)
 
         return binding.root
     }
@@ -31,5 +33,10 @@ class StatisticsFragment : Fragment(R.layout.fragment_statistics) {
         binding.apply {
             lifecycleOwner = this@StatisticsFragment
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

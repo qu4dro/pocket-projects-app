@@ -15,7 +15,9 @@ import ru.orlovvv.projects.util.ProjectStatus
 
 class CreateProjectDialog : BottomSheetDialogFragment() {
 
-    private lateinit var binding: DialogCreateProjectBinding
+    private var _binding: DialogCreateProjectBinding? = null
+    val binding
+        get() = _binding!!
     private val projectsViewModel: ProjectsViewModel by activityViewModels()
     private lateinit var bottomDialog: Dialog
 
@@ -25,7 +27,7 @@ class CreateProjectDialog : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = DialogCreateProjectBinding.inflate(layoutInflater)
+        _binding = DialogCreateProjectBinding.inflate(layoutInflater)
 
         return binding.root
     }
@@ -59,4 +61,10 @@ class CreateProjectDialog : BottomSheetDialogFragment() {
             )
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

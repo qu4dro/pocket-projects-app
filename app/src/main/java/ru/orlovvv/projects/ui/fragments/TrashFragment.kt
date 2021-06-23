@@ -17,9 +17,11 @@ import ru.orlovvv.projects.util.setStickersSpacing
 
 class TrashFragment : Fragment(R.layout.fragment_trash) {
 
-    private lateinit var binding: FragmentTrashBinding
+    private var _binding: FragmentTrashBinding? = null
+    val binding
+        get() = _binding!!
     private val projectsViewModel: ProjectsViewModel by activityViewModels()
-    private var projectAdapter = ProjectAdapter()
+    private val projectAdapter = ProjectAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +29,7 @@ class TrashFragment : Fragment(R.layout.fragment_trash) {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentTrashBinding.inflate(layoutInflater)
+        _binding = FragmentTrashBinding.inflate(layoutInflater)
 
         return binding.root
     }
@@ -59,5 +61,10 @@ class TrashFragment : Fragment(R.layout.fragment_trash) {
         projectAdapter.setOnPopupClickListener { popUp, project ->
             popUp.setProjectActions(projectsViewModel, project, popUp)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
