@@ -18,31 +18,48 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp">
+            android:layout_height="match_parent">
 
             <com.google.android.material.textview.MaterialTextView
-                style="@style/TextStyleBoldHead"
+                android:layout_marginVertical="16dp"
+                android:layout_marginStart="16dp"
                 android:id="@+id/tv_project_name"
-                android:layout_width="match_parent"
+                style="@style/TextStyleBoldHead"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxLines="2"
+                android:maxLines="3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_more"
                 android:text="@{project.name}"
                 app:layout_constraintTop_toTopOf="parent"
+
                 tools:text="Projects name" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:layout_marginTop="16dp"
-                style="@style/TextStyleRegularDescription"
+                android:layout_marginHorizontal="16dp"
+                android:paddingBottom="16dp"
                 android:id="@+id/tv_project_description"
+                style="@style/TextStyleRegularDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:ellipsize="end"
                 android:maxLines="8"
                 android:text="@{project.description}"
                 app:layout_constraintTop_toBottomOf="@id/tv_project_name"
                 tools:text="Projects description" />
+
+            <com.google.android.material.button.MaterialButton
+                android:padding="12dp"
+                android:id="@+id/btn_more"
+                style="@style/ButtonStyle.IconOnly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_more"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_project_name"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

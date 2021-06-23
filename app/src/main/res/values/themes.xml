@@ -21,5 +21,7 @@
         <item name="android:popupMenuStyle">@style/PopupMenuStyle</item>
         <item name="android:fontFamily">@font/rubik_medium</item>
         <item name="fontFamily">@font/rubik_medium</item>
+
+        <item name="android:windowContentTransitions">true</item>
     </style>
 </resources>
