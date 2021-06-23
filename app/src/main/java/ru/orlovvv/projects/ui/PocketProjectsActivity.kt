@@ -41,6 +41,7 @@ class PocketProjectsActivity : AppCompatActivity() {
                     title = when (destination.id) {
                         R.id.boardContainerFragment -> projectsViewModel.currentProjectName.value.toString()
                         R.id.statisticsFragment -> resources.getString(R.string.statistics)
+                        R.id.archiveFragment -> resources.getString(R.string.archive)
                         R.id.trashFragment -> resources.getString(R.string.trash_bin)
                         R.id.projectsFragment -> resources.getString(R.string.projects)
                         else -> ""
