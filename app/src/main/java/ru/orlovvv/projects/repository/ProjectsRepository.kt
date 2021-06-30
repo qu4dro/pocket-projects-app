@@ -15,6 +15,8 @@ class ProjectsRepository @Inject constructor(private val pocketProjectsDAO: Pock
 
     suspend fun deleteTask(task: Task) = pocketProjectsDAO.deleteTask(task)
 
+    suspend fun clearBin() = pocketProjectsDAO.clearBin(ProjectStatus.TRASHED.toString())
+
     suspend fun updateTaskImportance(taskId: Long, isImportant: Boolean) =
         pocketProjectsDAO.updateTaskImportance(taskId, isImportant)
 

@@ -61,6 +61,10 @@ class TrashFragment : Fragment(R.layout.fragment_trash) {
         projectAdapter.setOnPopupClickListener { popUp, project ->
             popUp.setProjectActions(projectsViewModel, project, popUp)
         }
+
+        binding.fabDeleteAll.setOnClickListener {
+            projectsViewModel.clearBin()
+        }
     }
 
     override fun onDestroyView() {

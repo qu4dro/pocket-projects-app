@@ -86,4 +86,8 @@ class ProjectsViewModel @Inject constructor(private val projectsRepository: Proj
     fun updateTaskCrossed(taskId: Long, crossed: Boolean) = viewModelScope.launch {
         projectsRepository.updateTaskCrossed(taskId, crossed)
     }
+
+    fun clearBin() = viewModelScope.launch {
+        projectsRepository.clearBin()
+    }
 }

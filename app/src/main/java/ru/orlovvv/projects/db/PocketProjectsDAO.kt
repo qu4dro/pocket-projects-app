@@ -33,6 +33,9 @@ interface PocketProjectsDAO {
     @Query("UPDATE projects SET status = :newStatus WHERE id = :projectId")
     suspend fun updateProjectStatus(projectId: Long, newStatus: String): Int
 
+    @Query("DELETE FROM projects WHERE status = :status")
+    suspend fun clearBin(status: String)
+
     @Query("SELECT * FROM projects WHERE status = :status")
     fun getProjectsByStatus(status: String): LiveData<List<Project>>
 
